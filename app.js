@@ -5,10 +5,14 @@ var cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var adminRouter = require('./routes/admin');
-var apiRouter = require('./routes/api');
+var router = express.Router();
 
+var bookmarksRouter = require('./routes').bookmarks;
+var likesRouter = require('./routes').likes;
+var profilesRouter = require('./routes').profiles;
+var usersRouter = require('./routes').users;
+var videosRouter = require('./routes').videos;
+var viewsRouter = require('./routes').views;
 
 var app = express();
 
@@ -23,16 +27,22 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/admin', adminRouter);
-app.use('/api', apiRouter);
+
+router.use('/bookmarks', bookmarksRouter)
+router.use('/likes', likesRouter)
+router.use('/profiles', profilesRouter)
+router.use('/users', usersRouter)
+router.use('/videos', videosRouter)
+router.use('/views', viewsRouter)
+
+app.use('/api', router);
 
 // // Require our routes into the application.
 // require('./db/routes')(app);
 
-app.get('*', (req, res) => res.status(200).send({
-  message: 'Welcome to the beginning of nothingness.',
-}));
+// app.get('*', (req, res) => res.status(200).send({
+//   message: 'Welcome to the beginning of nothingness.',
+// }));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,9 +1,15 @@
-var express = require('express');
-var router = express.Router();
+const bookmarks = require('./bookmarks_router');
+const likes = require('./likes_router');
+const profiles = require('./profiles_router');
+const users = require('./users_router');
+const videos = require('./videos_router');
+const views = require('./views_router');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-module.exports = router;
+module.exports = {
+  bookmarks,
+  likes,
+  profiles,
+  users,
+  videos,
+  views
+};
