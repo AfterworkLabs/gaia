@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "shawnfeng",
-    "password": null,
+    "username": "shawnsfeng",
+    "password": "1234",
     "database": "extreme_dev",
     "host": "127.0.0.1",
     "port": 5432,

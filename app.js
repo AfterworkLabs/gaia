@@ -27,6 +27,11 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', function (req, res) {
+  res.render('index', {
+    "title": "Extreme Dev"
+  });
+});
 
 router.use('/bookmarks', bookmarksRouter)
 router.use('/likes', likesRouter)
